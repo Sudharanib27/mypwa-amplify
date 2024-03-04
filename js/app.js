@@ -4,9 +4,8 @@ import awsconfig from "./aws-exports";
 // Configure Amplify with your GraphQL API URL and API key
 Amplify.configure({
   ...awsconfig,
-  aws_appsync_graphqlEndpoint:
-    "YOUR_GRAPHhttps://wihoyfnrz5hw7bc7iylfdyqwt4.appsync-api.us-east-2.amazonaws.com/graphql",
-  aws_appsync_apiKey: "da2-c4tkjc4jcfbedmudjzvjbd3pni",
+  aws_appsync_graphqlEndpoint: awsconfig.aws_appsync_graphqlEndpoint,
+  aws_appsync_apiKey: awsconfig.aws_appsync_apiKey,
 });
 
 // Listen for form submission
