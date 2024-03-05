@@ -14,7 +14,12 @@
         <input type="text" id="name" name="name" required />
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required />
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          onclick="callAPI(document.getElementById('id').value,document.getElementById('name').value)"
+        >
+          Submit
+        </button>
       </form>
     </div>
     <script src="js/app.js"></script>
