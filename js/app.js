@@ -27,3 +27,5 @@ function callAPI(id, name) {
       alert("Error occurred while processing the request.");
     });
 }
+
+window.callAPI = callAPI;
