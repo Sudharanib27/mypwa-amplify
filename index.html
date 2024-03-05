@@ -15,24 +15,15 @@
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required />
         <!-- Change button type to "button" to prevent form submission -->
-        <button type="button" id="submitBtn">Submit</button>
+        <button
+          type="button"
+          id="submitBtn"
+          onclick="callAPI(document.getElementById('id').value,document.getElementById('name').value)"
+        >
+          Submit
+        </button>
       </form>
     </div>
     <script src="js/app.js" type="module"></script>
-    <script>
-      // Add event listener to the submit button
-      document
-        .getElementById("submitBtn")
-        .addEventListener("click", function (event) {
-          console.log("Button clicked");
-          // Prevent default form submission behavior
-          event.preventDefault();
-          // Call the callAPI function with input values
-          callAPI(
-            document.getElementById("id").value,
-            document.getElementById("name").value
-          );
-        });
-    </script>
   </body>
 </html>
