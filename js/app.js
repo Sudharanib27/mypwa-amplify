@@ -1,12 +1,34 @@
-import Amplify, { API } from "aws-amplify";
+import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 
 // Configure Amplify with your GraphQL API URL and API key
-Amplify.configure({
-  ...awsconfig,
-  aws_appsync_graphqlEndpoint: awsconfig.aws_appsync_graphqlEndpoint,
-  aws_appsync_apiKey: awsconfig.aws_appsync_apiKey,
-});
+Amplify.configure(awsconfig);
+
+// Define the callAPI function that takes id and name as parameters
+const callAPI = (id, name) => {
+  // Instantiate a headers object
+  const myHeaders = new Headers();
+  // Add content type header to object
+  myHeaders.append("Content-Type", "application/json");
+  // Convert the object to a string using JSON.stringify
+  const raw = JSON.stringify({ id: id, name: name });
+  // Create a JSON object with parameters for API call
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  // Make API call with parameters and use promises to get response
+  fetch(
+    "YOUR_API_ENDPOINT", // Replace with your actual API endpoint
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => alert(JSON.parse(result).body))
+    .catch((error) => console.log("error", error));
+};
 
 // Listen for form submission
 document
@@ -19,32 +41,8 @@ document
     const id = document.getElementById("id").value;
 
     try {
-      // callAPI function that takes the base and exponent numbers as parameters
-      var callAPI = (id, name) => {
-        // instantiate a headers object
-        var myHeaders = new Headers();
-        // add content type header to object
-        myHeaders.append("Content-Type", "application/json");
-        // using built in JSON utility package turn object to string and store in a variable
-        var raw = JSON.stringify({ id: id, name: name });
-        // create a JSON object with parameters for API call and store in a variable
-        var requestOptions = {
-          method: "POST",
-          headers: myHeaders,
-          body: raw,
-          redirect: "follow",
-        };
-        // make API call with parameters and use promises to get response
-        fetch(
-          "https://itvwkp7335.execute-api.us-east-2.amazonaws.com/beta/mypwa2024",
-          requestOptions
-        )
-          .then((response) => response.text())
-          .then((result) => alert(JSON.parse(result).body))
-          .catch((error) => console.log("error", error));
-      };
-      // Log the response
-      console.log("API Response:", response);
+      // Call the callAPI function with id and name parameters
+      callAPI(id, name);
 
       // Clear the form
       document.getElementById("name").value = "";
