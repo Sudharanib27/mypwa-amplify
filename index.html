@@ -18,12 +18,13 @@
         <button type="button" id="submitBtn">Submit</button>
       </form>
     </div>
-    <script src="js/app.js"></script>
+    <script src="js/app.js" type="module"></script>
     <script>
       // Add event listener to the submit button
       document
         .getElementById("submitBtn")
         .addEventListener("click", function (event) {
+          console.log("Button clicked");
           // Prevent default form submission behavior
           event.preventDefault();
           // Call the callAPI function with input values

@@ -1,5 +1,12 @@
-import Amplify from "aws-amplify";
+import Amplify, { API } from "/aws-amplify";
 import awsconfig from "./aws-exports";
+
+// Configure Amplify with your GraphQL API URL and API key
+Amplify.configure({
+  ...awsconfig,
+  aws_appsync_graphqlEndpoint: awsconfig.aws_appsync_graphqlEndpoint,
+  aws_appsync_apiKey: awsconfig.aws_appsync_apiKey,
+});
 
 // Configure Amplify with your GraphQL API URL and API key
 Amplify.configure(awsconfig);
