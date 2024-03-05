@@ -22,7 +22,7 @@ const callAPI = (id, name) => {
 
   // Make API call with parameters and use promises to get response
   fetch(
-    "YOUR_API_ENDPOINT", // Replace with your actual API endpoint
+    "https://itvwkp7335.execute-api.us-east-2.amazonaws.com/beta/mypwa2024", // Replace with your actual API endpoint
     requestOptions
   )
     .then((response) => response.text())
